@@ -1,0 +1,9 @@
+<div class="chirp">
+	<h3><%= chirp.body %></h3>
+	<p>posted <%= time_ago_in_words(chirp.created_at) %> by 
+		<%= link_to chirp.user.username, username_path(chirp.user.username) %>
+		<% if current_user and current_user == chirp.user %> 
+		 | <%= link_to 'X', chirp, method: :delete, data: { remote: true, deletable: true } %> 
+		<% end %>
+	</p>
+</div>
